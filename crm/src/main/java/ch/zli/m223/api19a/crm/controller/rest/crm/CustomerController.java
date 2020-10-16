@@ -1,45 +1,71 @@
 package ch.zli.m223.api19a.crm.controller.rest.crm;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.zli.m223.api19a.crm.controller.rest.crm.dto.ChangeCustomerDto;
 import ch.zli.m223.api19a.crm.controller.rest.crm.dto.CustomerDto;
+import ch.zli.m223.api19a.crm.controller.rest.crm.dto.CustomerInputDto;
 import ch.zli.m223.api19a.crm.controller.rest.crm.dto.MemoDto;
+import ch.zli.m223.api19a.crm.controller.rest.crm.dto.MemoInputDto;
+import ch.zli.m223.api19a.crm.model.Customer;
+import ch.zli.m223.api19a.crm.model.Memo;
 import ch.zli.m223.api19a.crm.service.CustomerService;
-import ch.zli.m223.api19a.crm.service.MemoService;
 
 @RestController
 public class CustomerController {
 	@Autowired CustomerService customerService;
-	@Autowired MemoService memoService;
 	
 	@GetMapping("/customers")
-	public List<CustomerDto> getAllCustomers() { return null; }
+	public List<CustomerDto> getAllCustomers() {
+		return customerService.getAllCustomers().stream()
+				.map((Customer customer) -> { return new CustomerDto(customer); })
+				.collect(Collectors.toList());
+	}
 	
 	@DeleteMapping("/customers/{id}")
-	public void deleteCustomer() {}
+	public void deleteCustomer(@PathVariable long id) {
+		customerService.deleteCustomer(id);
+	}
 	
 	@PutMapping("/customers/{id}")
-	public CustomerDto updateCustomer() {return null;}
+	public CustomerDto updateCustomer(@PathVariable long id, @RequestBody ChangeCustomerDto ccDto) {
+		return new CustomerDto(customerService.updateCustomer(id, ccDto.name, ccDto.street, ccDto.city));
+	}
 	
 	@PostMapping("/customers") 
-	public CustomerDto createCustomer() {return null;}
+	public CustomerDto createCustomer(@RequestBody CustomerInputDto ciDto) {
+		return new CustomerDto(customerService.createCustomer(ciDto.name, ciDto.street, ciDto.city));
+	}
 	
 	@GetMapping("/customers/{id}/memos")
-	public MemoDto getAllMemosFromCustomer() {return null;}
+	public List<MemoDto> getAllMemosFromCustomer(@PathVariable long id) {
+		return customerService.getAllMemosFromCustomer(id).stream()
+		.map((Memo memo) -> { return new MemoDto(memo); })
+		.collect(Collectors.toList());
+	}
 	
-	@PostMapping("/customers{id}/memos")
-	public MemoDto createMemo() {return null;}
+	@PostMapping("/customers/{id}/memos")
+	public MemoDto createMemo(@PathVariable long id, @RequestBody MemoInputDto miDto) {
+		return new MemoDto(customerService.createMemo(id, miDto.note));
+	}
 	
 	@DeleteMapping("/customers/memos/{id}")
-	public void deleteMemo() {}
+	public void deleteMemo(@PathVariable long id) {
+		this.customerService.deleteMemo(id);
+	}
 	
 	@PutMapping("/customers/{custId}/memos/{memoId}")
-	public MemoDto updateMemo() {return null;}
+	public MemoDto updateMemo(@PathVariable long  custId, @PathVariable long memoId, @RequestBody MemoInputDto miDto) {
+		return new MemoDto(this.customerService.updateMemo(memoId, custId, miDto.note));
+	}
 }

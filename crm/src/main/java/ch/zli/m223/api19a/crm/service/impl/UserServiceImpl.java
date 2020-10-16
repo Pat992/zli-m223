@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.zli.m223.api19a.crm.exception.InvalidPasswordException;
-import ch.zli.m223.api19a.crm.exception.NoPassowrdException;
+import ch.zli.m223.api19a.crm.exception.NoPasswordException;
 import ch.zli.m223.api19a.crm.exception.NoUserNameException;
 import ch.zli.m223.api19a.crm.exception.UserAlreadyExistsException;
 import ch.zli.m223.api19a.crm.exception.UserNotFoundException;
@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService{
 	@Autowired private UserRepository userRepository;
 	
 	@Override
-	public List<AppUser> getAllUsers() {
-		return new ArrayList<>(userRepository.findAll());
+	public List<AppUser> getAllUsers() { 
+		return new ArrayList<>(userRepository.findAll()); 
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService{
 		
 		if(name == null || name.trim().isEmpty()) { throw new NoUserNameException(); }
 		
-		if(password == null || password.trim().isEmpty()) {throw new NoPassowrdException(); }
+		if(password == null || password.trim().isEmpty()) {throw new NoPasswordException(); }
 		
 		if (roles == null) { roles = new HashSet<String>(); }
 		

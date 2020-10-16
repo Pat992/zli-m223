@@ -8,11 +8,16 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import ch.zli.m223.api19a.crm.model.Customer;
+import ch.zli.m223.api19a.crm.repository.CustomerRepository;
+import ch.zli.m223.api19a.crm.repository.MemoRepository;
 import ch.zli.m223.api19a.crm.repository.UserRepository;
 
 @Component
 public class ServerInitialize implements ApplicationRunner {
 	@Autowired UserRepository userRepository;
+	@Autowired CustomerRepository customerRepository;
+	@Autowired MemoRepository memoRepository;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -24,6 +29,14 @@ public class ServerInitialize implements ApplicationRunner {
 		userRepository.createUser("user", "1234", user);
 		userRepository.createUser("admin", "1234", admin);
 		userRepository.createUser("usmin", "1234", usmin);
+		
+		Customer customer1 = customerRepository.createCustomer("Customer", "Customer street", "Customer city");
+		Customer customerGaga = customerRepository.createCustomer("Gaga", "Gaga street", "Gaga city");
+		Customer customerGugus = customerRepository.createCustomer("Gugus Customer", "Gugus street", "Gugus city");
+		
+		memoRepository.createMemo(customer1, "First entry");
+		memoRepository.createMemo(customer1, "Second entry");
+		memoRepository.createMemo(customer1, "Third entry");
 	}
 
 }
