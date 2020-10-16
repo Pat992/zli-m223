@@ -1,0 +1,3 @@
+[submodule "crm-frontend"]
+	path = crm-frontend
+	url = https://github.com/maexeler/crm-frontend.git
