@@ -1,0 +1,11 @@
+package ch.zli.m223.api19a.crm.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import ch.zli.m223.api19a.crm.model.AppUser;
+import ch.zli.m223.api19a.crm.model.impl.AppUserImpl;
+
+public interface UserRepository extends JpaRepository<AppUserImpl, Long> {
+
+	AppUser createUser(String name, String password, String[] roles);
+}

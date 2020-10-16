@@ -1,0 +1,11 @@
+package ch.zli.m223.api19a.crm.service;
+
+import java.util.List;
+
+import ch.zli.m223.api19a.crm.model.AppUser;
+
+public interface UserService {
+
+	List<AppUser> getAllUsers();
+
+}

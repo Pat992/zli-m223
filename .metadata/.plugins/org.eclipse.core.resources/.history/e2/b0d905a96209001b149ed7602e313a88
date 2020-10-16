@@ -1,0 +1,18 @@
+package ch.zli.m223.api19a.crm.service.impl;
+
+import java.util.List;
+
+import ch.zli.m223.api19a.crm.model.AppUser;
+import ch.zli.m223.api19a.crm.repository.UserRepository;
+import ch.zli.m223.api19a.crm.service.UserService;
+
+public class UserServiceImpl implements UserService{
+	
+	private UserRepository userRepository;
+	
+	@Override
+	public List<AppUser> getAllUsers() {
+		return userRepository.findAll();
+	}
+
+}

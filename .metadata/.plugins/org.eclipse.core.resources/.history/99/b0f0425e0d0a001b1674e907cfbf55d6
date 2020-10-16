@@ -1,0 +1,6 @@
+package ch.zli.m223.api19a.crm.exception;
+
+@SuppressWarnings("serial")
+public class UserAlreadyExistsException extends NoStackTraceException {
+	public UserAlreadyExistsException(String msg) { super(msg); }
+}

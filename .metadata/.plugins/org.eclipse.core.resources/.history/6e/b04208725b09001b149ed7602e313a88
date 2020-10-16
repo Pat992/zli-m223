@@ -1,0 +1,6 @@
+package ch.zli.m223.api19a.crm.model;
+
+public interface User {
+	Long getId();
+	String getName();
+}

@@ -1,0 +1,6 @@
+package ch.zli.m223.api19a.crm.exception;
+
+public class NoStackTraceException extends RuntimeException {
+	public NoStackTraceException() {}
+	public NoStackTraceException(String msg) {}
+}

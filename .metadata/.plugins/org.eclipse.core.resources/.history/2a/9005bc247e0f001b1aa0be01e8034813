@@ -1,0 +1,8 @@
+package ch.zli.m223.api19a.crm.controller.rest.crm.dto;
+
+public class MemoDto {
+	public Long id;
+	public Long customerId;
+	public String note;
+	
+}

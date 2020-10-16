@@ -1,0 +1,54 @@
+package ch.zli.m223.api19a.crm.model.impl;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import ch.zli.m223.api19a.crm.model.AppUser;
+
+@Entity(name="AppUser")
+public class AppUserImpl implements AppUser {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String name;
+	private String passwordHash;
+	@ElementCollection(fetch=FetchType.EAGER)
+	private Set<String> roles;
+	
+	public AppUserImpl(String name, String password, String[] roles) {
+		this.name = name;
+		passwordHash = setPassword(password);
+		this.roles = new HashSet<>(roles);
+	}
+
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String getPassword() {
+		return passwordHash;
+	}
+
+	@Override
+	public Set<String> getRoles() {
+		return roles;
+	}
+
+	private String setPassword(String password) {
+		return password; // TODO
+	}
+}

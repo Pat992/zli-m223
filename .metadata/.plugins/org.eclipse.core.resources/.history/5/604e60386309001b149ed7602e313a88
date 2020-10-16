@@ -1,0 +1,25 @@
+package ch.zli.m223.api19a.crm.controller.rest.user;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import ch.zli.m223.api19a.crm.controller.rest.user.dto.UserDto;
+import ch.zli.m223.api19a.crm.model.AppUser;
+import ch.zli.m223.api19a.crm.service.UserService;
+
+@Controller
+public class UserController {
+	@Autowired
+	UserService userService;
+
+	@GetMapping("/users/")
+	public List<UserDto> getAllUsers() {
+		return userService.getAllUsers().stream()
+			.map((AppUser user) -> {return new UserDto(user);})
+			.collect(Collectors.toList());
+	}
+}

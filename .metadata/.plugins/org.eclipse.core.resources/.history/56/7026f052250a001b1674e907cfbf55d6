@@ -1,0 +1,28 @@
+package ch.zli.m223.api19a.crm.repository;
+
+import java.util.Optional;
+import java.util.Set;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import ch.zli.m223.api19a.crm.controller.rest.user.dto.RoleInputDto;
+import ch.zli.m223.api19a.crm.model.AppUser;
+import ch.zli.m223.api19a.crm.model.impl.AppUserImpl;
+
+public interface UserRepository extends JpaRepository<AppUserImpl, Long> {
+
+	default AppUser createUser(String name, String password, Set<String> roles) {
+		AppUserImpl user = new AppUserImpl(name, password, roles);
+		return save(user);
+	}
+
+	Optional<AppUser> findByName(String name);
+
+	default void changePassword(AppUser user, String newPassword) {
+		save(((AppUserImpl)user).setPassword(newPassword));
+	}
+
+	default AppUser changeRoles(AppUser user, RoleInputDto roles) {
+		save(((AppUserImpl)user).setRoles(roles));
+	}
+}

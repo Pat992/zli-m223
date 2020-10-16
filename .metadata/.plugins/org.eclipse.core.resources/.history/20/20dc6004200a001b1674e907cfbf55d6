@@ -1,0 +1,56 @@
+package ch.zli.m223.api19a.crm.service.impl;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ch.zli.m223.api19a.crm.exception.NoPassowrdException;
+import ch.zli.m223.api19a.crm.exception.NoUserNameException;
+import ch.zli.m223.api19a.crm.exception.UserAlreadyExistsException;
+import ch.zli.m223.api19a.crm.exception.UserDeleteException;
+import ch.zli.m223.api19a.crm.exception.UserNotFoundException;
+import ch.zli.m223.api19a.crm.model.AppUser;
+import ch.zli.m223.api19a.crm.repository.UserRepository;
+import ch.zli.m223.api19a.crm.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService{
+	@Autowired private UserRepository userRepository;
+	
+	@Override
+	public List<AppUser> getAllUsers() {
+		return new ArrayList<>(userRepository.findAll());
+	}
+
+	@Override
+	public AppUser createUser(String name, String password, Set<String> roles) {
+		
+		if(name == null || name.trim().isEmpty()) { throw new NoUserNameException(); }
+		
+		if(password == null || password.trim().isEmpty()) {throw new NoPassowrdException(); }
+		
+		if (roles == null) { roles = new HashSet<String>(); }
+		
+		userRepository.findByName(name).ifPresent((AppUser user) -> { throw new UserAlreadyExistsException(); });
+
+		return userRepository.createUser(name, password, roles);
+	}
+	
+	@Override
+	public AppUser getUserById(long id) {
+		return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+	}
+
+	@Override
+	public void deleteUser(long id) {
+		try {
+			userRepository.deleteById(id);
+		} catch(Exception e) {
+			throw new UserDeleteException();
+		}
+	}
+}

@@ -1,0 +1,21 @@
+package ch.zli.m223.api19a.crm.controller.rest.user;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Controller;
+
+import ch.zli.m223.api19a.crm.controller.rest.user.dto.UserDto;
+import ch.zli.m223.api19a.crm.model.AppUser;
+import ch.zli.m223.api19a.crm.service.UserService;
+
+@Controller
+public class UserController {
+	UserService userService;
+
+	public List<UserDto> getAllUsers() {
+		userService.getAllUsers().stream()
+			.map((AppUser user) -> {return new UserDto(user);})
+			.collect(Collectors.toList())
+	}
+}

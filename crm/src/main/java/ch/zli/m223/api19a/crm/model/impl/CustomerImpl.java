@@ -1,0 +1,51 @@
+package ch.zli.m223.api19a.crm.model.impl;
+
+import java.util.List;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import ch.zli.m223.api19a.crm.model.Customer;
+import ch.zli.m223.api19a.crm.model.Memo;
+
+@Entity(name="Customer")
+public class CustomerImpl implements Customer {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	private String name;
+	private String street;
+	private String city;
+	
+	@ElementCollection(fetch=FetchType.EAGER)
+	private List<Memo> memos;
+	
+	protected CustomerImpl() {} // For Jpa
+	
+	protected CustomerImpl(String name, String street, String city) {
+		this.name = name;
+		this.street = street;
+		this.city = city;
+	}
+	
+	@Override
+	public Long getId() { return this.id; }
+
+	@Override
+	public String getName() { return this.name; }
+
+	@Override
+	public String getStreet() { return this.street; }
+
+	@Override
+	public String getCity() { return this.city; }
+
+	@Override
+	public List<Memo> getMemos() { return this.memos; }
+
+}

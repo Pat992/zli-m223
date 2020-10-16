@@ -1,0 +1,41 @@
+package ch.zli.m223.api19a.crm.model.impl;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import ch.zli.m223.api19a.crm.model.AppUser;
+
+@Entity(name="AppUser")
+public class AppUserImpl implements AppUser {
+
+	@Id
+	@GeneratedValue
+	Long id;
+	String name;
+	String passwordHash;
+	Set<String> roles;
+	
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String getPassword() {
+		return passwordHash;
+	}
+
+	@Override
+	public Set<String> getRoles() {
+		return roles;
+	}
+
+}

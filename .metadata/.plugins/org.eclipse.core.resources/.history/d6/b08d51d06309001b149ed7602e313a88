@@ -1,0 +1,33 @@
+package ch.zli.m223.api19a.crm.model.impl;
+
+import java.util.Set;
+
+import ch.zli.m223.api19a.crm.model.AppUser;
+
+public class AppUserImpl implements AppUser {
+
+	@Override
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<String> getRoles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
