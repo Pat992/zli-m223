@@ -37,6 +37,13 @@ public class ServerInitialize implements ApplicationRunner {
 		memoRepository.createMemo(customer1, "First entry");
 		memoRepository.createMemo(customer1, "Second entry");
 		memoRepository.createMemo(customer1, "Third entry");
+		
+		memoRepository.createMemo(customerGaga, "this is some information");
+		memoRepository.createMemo(customerGaga, "some more information");
+		memoRepository.createMemo(customerGaga, "a lot of information");
+		
+		memoRepository.createMemo(customerGugus, "He has a 10 cats");
+		memoRepository.createMemo(customerGugus, "He has a dog");
 	}
 
 }
