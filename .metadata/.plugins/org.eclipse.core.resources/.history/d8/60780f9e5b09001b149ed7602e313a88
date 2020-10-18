@@ -1,9 +1,0 @@
-package ch.zli.m223.api19a.crm.model;
-
-import java.util.Set;
-
-public interface User {
-	Long getId();
-	String getName();
-	Set<String> getRole();
-}
