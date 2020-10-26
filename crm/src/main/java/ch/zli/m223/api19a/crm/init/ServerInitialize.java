@@ -13,6 +13,11 @@ import ch.zli.m223.api19a.crm.repository.CustomerRepository;
 import ch.zli.m223.api19a.crm.repository.MemoRepository;
 import ch.zli.m223.api19a.crm.repository.UserRepository;
 
+/**
+ * Will create some test-data, to work with.
+ * @author Patrick Hettich
+ *
+ */
 @Component
 public class ServerInitialize implements ApplicationRunner {
 	@Autowired UserRepository userRepository;

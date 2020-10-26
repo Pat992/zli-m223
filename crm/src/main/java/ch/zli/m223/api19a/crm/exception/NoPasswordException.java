@@ -5,4 +5,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @SuppressWarnings("serial")
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Passowrd cannot be empty")
-public class NoPasswordException extends NoStackTraceException {}
+public class NoPasswordException extends RuntimeException {}

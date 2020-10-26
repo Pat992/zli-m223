@@ -5,4 +5,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @SuppressWarnings("serial")
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Error deleting user")
-public class UserDeleteException extends NoStackTraceException {}
+public class UserDeleteException extends RuntimeException {}

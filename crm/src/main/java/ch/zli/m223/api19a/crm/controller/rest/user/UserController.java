@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,12 @@ import ch.zli.m223.api19a.crm.controller.rest.user.dto.UserInputDto;
 import ch.zli.m223.api19a.crm.model.AppUser;
 import ch.zli.m223.api19a.crm.service.UserService;
 
+/**
+ * Controller to create endpoints for user.
+ * @author Patrick
+ *
+ */
+@CrossOrigin()
 @RestController
 public class UserController {
 	@Autowired UserService userService;
@@ -47,7 +54,7 @@ public class UserController {
 	
 	@PostMapping("/users")
 	public UserDto createUser(@RequestBody UserInputDto user) {
-		return new UserDto(userService.createUser(user.name, user.password, user.roles));
+		return new UserDto(userService.createUser(user.username, user.password, user.roles));
 	}
 	
 	@DeleteMapping("/users/{id}")

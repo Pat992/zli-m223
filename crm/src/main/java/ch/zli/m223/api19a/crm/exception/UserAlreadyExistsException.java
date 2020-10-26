@@ -5,4 +5,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @SuppressWarnings("serial")
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="User already existing")
-public class UserAlreadyExistsException extends NoStackTraceException {}
+public class UserAlreadyExistsException extends RuntimeException {}

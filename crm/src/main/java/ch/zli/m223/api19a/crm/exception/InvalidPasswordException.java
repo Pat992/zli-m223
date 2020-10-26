@@ -5,4 +5,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @SuppressWarnings("serial")
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Invalid Password")
-public class InvalidPasswordException extends NoStackTraceException {}
+public class InvalidPasswordException extends RuntimeException {}

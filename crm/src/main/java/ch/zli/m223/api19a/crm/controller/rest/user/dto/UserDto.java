@@ -6,14 +6,14 @@ import ch.zli.m223.api19a.crm.model.AppUser;
 
 public class UserDto {
 	public Long id;
-	public String name;
+	public String username;
 	public Set<String> roles;
 	
 	public UserDto() {}
 	
 	public UserDto(AppUser user) {
 		id = user.getId();
-		name = user.getName();
+		username = user.getName();
 		roles = user.getRoles();
 	}
 }

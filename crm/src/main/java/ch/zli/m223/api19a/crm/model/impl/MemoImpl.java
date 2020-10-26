@@ -1,9 +1,8 @@
 package ch.zli.m223.api19a.crm.model.impl;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +19,7 @@ public class MemoImpl implements Memo {
 	private Long id;
 	
 	private long timeInMs;
+	@Column(nullable=false)
 	private String note;
 	
 	@ManyToOne
@@ -52,8 +52,9 @@ public class MemoImpl implements Memo {
 	}
 	
 	private Long setCurrentTimeInMs() {
-		ZonedDateTime startOfToday = LocalDate.now().atStartOfDay(ZoneId.systemDefault());
+		Date date = new Date();
+		long imeInMs = date.getTime();
 		
-		return startOfToday.toEpochSecond() * 1000;
+		return imeInMs;
 	}
 }

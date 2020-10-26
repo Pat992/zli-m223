@@ -5,4 +5,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @SuppressWarnings("serial")
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Customer not found")
-public class CustomerNotFoundException extends NoStackTraceException{}
+public class CustomerNotFoundException extends RuntimeException{}

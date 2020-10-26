@@ -5,4 +5,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @SuppressWarnings("serial")
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Username cannot be empty")
-public class NoUserNameException extends NoStackTraceException {}
+public class NoUserNameException extends RuntimeException {}

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +22,19 @@ import ch.zli.m223.api19a.crm.model.Customer;
 import ch.zli.m223.api19a.crm.model.Memo;
 import ch.zli.m223.api19a.crm.service.CustomerService;
 
+/**
+ * Controller to create endpoints for working with customer and memos.
+ * @author Patrick Hettich
+ *
+ */
+@CrossOrigin()
 @RestController
 public class CustomerController {
 	@Autowired CustomerService customerService;
 	
+	/**
+	 * CRUD for customer
+	 */
 	@GetMapping("/customers")
 	public List<CustomerDto> getAllCustomers() {
 		return customerService.getAllCustomers().stream()
@@ -47,6 +57,9 @@ public class CustomerController {
 		return new CustomerDto(customerService.createCustomer(ciDto.name, ciDto.street, ciDto.city));
 	}
 	
+	/**
+	 * CRUD for memos
+	 */
 	@GetMapping("/customers/{id}/memos")
 	public List<MemoDto> getAllMemosFromCustomer(@PathVariable long id) {
 		return customerService.getAllMemosFromCustomer(id).stream()

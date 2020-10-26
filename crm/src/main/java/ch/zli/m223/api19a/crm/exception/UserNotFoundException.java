@@ -5,4 +5,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @SuppressWarnings("serial")
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Error finding user")
-public class UserNotFoundException extends NoStackTraceException{}
+public class UserNotFoundException extends RuntimeException{}
