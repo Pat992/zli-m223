@@ -2,13 +2,11 @@ INDEX VERSION 1.131+C:\Users\user\Desktop\M223\.metadata\.plugins\org.eclipse.jd
 2563455167.index
 1579516657.index
 1465176515.index
-788898013.index
 2399918612.index
 1282555158.index
 4007580622.index
 3064865530.index
 1499779621.index
-728359363.index
 3319726154.index
 1372634641.index
 4062663792.index
@@ -58,7 +56,6 @@ INDEX VERSION 1.131+C:\Users\user\Desktop\M223\.metadata\.plugins\org.eclipse.jd
 1442050055.index
 631439699.index
 1359231405.index
-2723947284.index
 2341021665.index
 1625455577.index
 3004643529.index
@@ -81,7 +78,6 @@ INDEX VERSION 1.131+C:\Users\user\Desktop\M223\.metadata\.plugins\org.eclipse.jd
 805879898.index
 752664156.index
 1004588854.index
-2655798517.index
 2831940969.index
 1899953381.index
 2559302847.index
