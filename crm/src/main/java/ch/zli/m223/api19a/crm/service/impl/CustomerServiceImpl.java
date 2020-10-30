@@ -15,6 +15,11 @@ import ch.zli.m223.api19a.crm.repository.CustomerRepository;
 import ch.zli.m223.api19a.crm.repository.MemoRepository;
 import ch.zli.m223.api19a.crm.service.CustomerService;
 
+/**
+ * Implements the CustomerService
+ * @author Patrick Hettich
+ *
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired private CustomerRepository customerRepository;

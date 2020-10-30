@@ -36,8 +36,8 @@ public class ServerInitialize implements ApplicationRunner {
 		userRepository.createUser("usmin", "1234", usmin);
 		
 		Customer customer1 = customerRepository.createCustomer("Customer", "Customer street", "Customer city");
-		Customer customerGaga = customerRepository.createCustomer("Gaga", "Gaga street", "Gaga city");
-		Customer customerGugus = customerRepository.createCustomer("Gugus Customer", "Gugus street", "Gugus city");
+		Customer customerGaga = customerRepository.createCustomer("Test Customer", "Test street", "Test city");
+		Customer customerGugus = customerRepository.createCustomer("Final Customer", "Final road", "Final town");
 		
 		memoRepository.createMemo(customer1, "First entry");
 		memoRepository.createMemo(customer1, "Second entry");

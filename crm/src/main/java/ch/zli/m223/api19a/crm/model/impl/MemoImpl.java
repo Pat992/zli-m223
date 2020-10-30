@@ -11,9 +11,17 @@ import javax.persistence.ManyToOne;
 import ch.zli.m223.api19a.crm.model.Customer;
 import ch.zli.m223.api19a.crm.model.Memo;
 
+/**
+ * Implementation for Memo
+ * @author Patrick Hettich
+ *
+ */
 @Entity(name="Memo")
 public class MemoImpl implements Memo {
 
+	/**
+	 * private Attributes for MemoImpl
+	 */
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -27,12 +35,20 @@ public class MemoImpl implements Memo {
 	
 	protected MemoImpl() {} // For Jpa
 	
+	/**
+	 * ctor
+	 * @param note
+	 * @param customer
+	 */
 	public MemoImpl(String note, Customer customer) {
 		this.note = note;
 		this.customer = (CustomerImpl)customer;
 		this.timeInMs = this.setCurrentTimeInMs();
 	}
-	
+
+	/**
+	 * Getter
+	 */
 	@Override
 	public Long getId() { return this.id; }
 	
@@ -51,6 +67,10 @@ public class MemoImpl implements Memo {
 		return this;
 	}
 	
+	/**
+	 * Sets current time in milliseconds as a long.
+	 * @return
+	 */
 	private Long setCurrentTimeInMs() {
 		Date date = new Date();
 		long imeInMs = date.getTime();

@@ -17,6 +17,11 @@ import ch.zli.m223.api19a.crm.model.AppUser;
 import ch.zli.m223.api19a.crm.repository.UserRepository;
 import ch.zli.m223.api19a.crm.service.UserService;
 
+/**
+ * Implements the UserService
+ * @author Patrick Hettich
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired private UserRepository userRepository;

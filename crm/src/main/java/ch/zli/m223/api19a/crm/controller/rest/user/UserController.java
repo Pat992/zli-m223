@@ -21,7 +21,7 @@ import ch.zli.m223.api19a.crm.model.AppUser;
 import ch.zli.m223.api19a.crm.service.UserService;
 
 /**
- * Controller to create endpoints for user.
+ * Controller to create endpoints for users.
  * @author Patrick
  *
  */
@@ -30,6 +30,9 @@ import ch.zli.m223.api19a.crm.service.UserService;
 public class UserController {
 	@Autowired UserService userService;
 
+	/**
+	 * CRUD for Users
+	 */
 	@GetMapping("/users")
 	public List<UserDto> getAllUsers() {
 		return userService.getAllUsers().stream()
