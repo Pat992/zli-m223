@@ -1,4 +1,7 @@
 # CRM
+## Functionality
+An application to work with customers and their memos.
+Both customers and memos include CRUD-operations.
 
 ## Frontend
 ### Starting the Application
